@@ -36,10 +36,18 @@ public static class TextHelper
         if (word.Length < 3)
             return true;
 
-        var middleStart = word.Length % 2 == 0 ? (word.Length - 1) / 2 : word.Length / 2;
-        var middleLength = word.Length % 2 == 0 ? 2 : 1;
+        var isWordLengthEven = word.Length % 2 == 0;
+
+        var middleStart = DivideByTwoAndRoundUp(word.Length) - 1;
+        var middleLength = isWordLengthEven ? 2 : 1;
 
         var middle = word.Substring(middleStart, middleLength);
         return !middle.Any(c => "aeiouAEIOU".Contains(c));
+    }
+
+    public static int DivideByTwoAndRoundUp(double intInput)
+    {
+        double result = Math.Ceiling(intInput / 2);
+        return Convert.ToInt32(result);
     }
 }

@@ -26,6 +26,8 @@ public class TextHelperTests
     [InlineData("the", true)]
     [InlineData("Rather", true)]
     [InlineData("tired", true)]
+    [InlineData("ORANGE", false)]
+    [InlineData("MARMALADE", false)]
     public void MiddleOfTheWordDoesNotContainsVowel_Word_BoolReturned(string stringInput, bool expectedResult)
     {
         var result = TextHelper.MiddleOfTheWordDoesNotContainsVowel(stringInput);
@@ -56,4 +58,15 @@ public class TextHelperTests
 
         Assert.Equal(expectedResult, result);
     }
+
+    [Theory]
+    [InlineData(4, 2)]
+    [InlineData(5, 3)]
+    public void DivideByTwoAndRoundUp_Number_IntReturned(int intInput, int expectedResult)
+    {
+        var result = TextHelper.DivideByTwoAndRoundUp(intInput);
+
+        Assert.Equal(expectedResult, result);
+    }
+
 }
